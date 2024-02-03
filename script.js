@@ -1,5 +1,16 @@
 function sendMessage() {
     var userInput = document.getElementById("user-input").value;
+    sendMessageAndUpdateChat(userInput);
+}
+
+function handleKeyDown(event) {
+    if (event.key === "Enter") {
+        var userInput = document.getElementById("user-input").value;
+        sendMessageAndUpdateChat(userInput);
+    }
+}
+
+function sendMessageAndUpdateChat(userInput) {
     var chatBody = document.getElementById("chat-body");
 
     var userMessage = document.createElement("div");
