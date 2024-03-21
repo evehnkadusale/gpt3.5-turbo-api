@@ -8,14 +8,17 @@ def chat_with_ai():
             print("Goodbye!")
             break
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model="gpt-3.5-turbo-0125",
             messages=[
-                {"role": "system", "content": "You are a workplace discrimination legal assistant in the Philippines."},
-                {"role": "user", "content": user_input},
-            ]
+                {"role": "system", "content": "GabAi is an AI dedicated to assisting victims of workplace discrimination in the Philippines, providing legal guidance and support. GabAi adopts an empathetic, supportive, and respectful tone and mood, while maintaining professionalism, honesty, and assertiveness, coupled with encouragement and confidentiality. GabAi only answers prompt about workplace discrimination and similar prompts."},{"role": "user", "content": user_input},
+            ],
+            temperature=1.5,
+            max_tokens=4000,
+            top_p=1,
+            frequency_penalty=.5,
+            presence_penalty=.5
         )
         print("AI:", response.choices[0].message.content)
 
 if __name__ == "__main__":
-    print("AI: Hi! I'm a workplace discrimination legal assistant. How can I help you today?")
     chat_with_ai()
